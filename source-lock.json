@@ -1,0 +1,36 @@
+{
+  "canonical_repository": "https://github.com/AceDataCloud/AceDataCloudMediaHermes",
+  "canonical_commit": "a5b06392f0cd6dff13c076f52f9ef874ee81a67d",
+  "generator": "scripts/export_service.py",
+  "service": "acemusic",
+  "consumer_repository": "https://github.com/AceDataCloud/ACEMusicHermes",
+  "canonical_contract": "services/acemusic.json",
+  "identity_map": {
+    "tool_prefix": [
+      "acedatacloud_acemusic",
+      "acedatacloud_single_acemusic"
+    ],
+    "toolset": [
+      "acedatacloud-acemusic",
+      "acedatacloud-single-acemusic"
+    ],
+    "native_image_provider": null
+  },
+  "transport_sha256": "890fd4b625ac523777690461aeb1e7d05b353409480b82492ae6c529af0c9c54",
+  "canonical_operation_sha256": "1226c89b17fa55a2c96168774a6de2d2a45cfad8f63ffc734f2d2623d7b8c4e3",
+  "generated_files": {
+    "__init__.py": "befe7ccc20f9dc0cd05d3c62fe25f036ab59371a82de41ef4edbc581af803aa5",
+    "client.py": "890fd4b625ac523777690461aeb1e7d05b353409480b82492ae6c529af0c9c54",
+    "image_provider.py": "183dc1f72fa1905364466aa30da14d82c074d3484ee6a6a6a5b739a62342490c",
+    "services/acemusic.json": "1acedbfa763296c53378966cf46208d53e37e43067c942fd72dad7ffcc18af3a",
+    "plugin.yaml": "164d13c36c2acfc5a1d74f350ea9969e04c12414d6df061439aabb31e191267a",
+    "tests/test_contracts.py": "cfea22976154a3237ce2434c6d776c7545eb70b3a64c5317afe3e2b5c9699969",
+    "tests/test_registration.py": "a21dbd8e08dc4bd5c4c7604c7731ed7ca5806db0acd3d988a9523b8f4d530b34",
+    "tests/test_source_profile.py": "d29b78f9671e46fccfa1239c8f864ae282c19c8f7d9411b8b2ac2138373336ba",
+    "scripts/check_runtime.py": "be594c81cf4436cc9689babae0344815268aab33345afc391221079be151e90f",
+    "LICENSE": "72d30730d068e067be58878959bac2450f5a05f2b2e3c365cdc13a0181635c3c",
+    ".github/workflows/validate.yml": "e68a3f47f61536fb05e43607266267213d41f5908386a7dacf35df52138fe233",
+    "README.md": "9e87593a788eb47c0ed4b060371868a848674d8cd79ed1c2d0f3912040d72356",
+    "readme/README_zh_Hans.md": "2af43168749d03aea762d12ab94bd065abe317c782051b463f8967a3dd6407af"
+  }
+}
