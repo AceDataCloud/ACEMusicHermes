@@ -33,7 +33,7 @@ hermes tools list
 
 ## 单一源码与验收边界
 
-由 [canonical 媒体源码](https://github.com/AceDataCloud/AceDataCloudMediaHermes) 的 `72e090905e31859dbf9a880ef3095e12308b9d1a` 统一生成。`source-lock.json` 固定 transport/schema 的来源、哈希和名称映射，CI 用同一 commit 重新生成比较。runtime/schema 修复先交唯一源，再生成消费仓，不手写维护多套底座。
+由 [canonical 媒体源码](https://github.com/AceDataCloud/AceDataCloudMediaHermes) 的 `f47dbc5ee333c8ca7c7489c31283dbe24035bdad` 统一生成。`source-lock.json` 固定 transport/schema 的来源、哈希和名称映射，CI 用同一 commit 重新生成比较。runtime/schema 修复先交唯一源，再生成消费仓，不手写维护多套底座。
 
 CI 包括 unittest 正常发现、Hermes 0.23.1 官方校验、按精确 SHA 正常 Git 安装、两种隔离模式的单独/共装注册和无效输入 dispatch。mock/宿主兼容不等于新收费请求、唯一账单、当前 GUI、默认预装或官方收录。
 
