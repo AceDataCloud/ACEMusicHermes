@@ -15,10 +15,10 @@ hermes tools list
 
 默认安装仓库当前默认分支；如需固定版本或回滚，增加 `--ref <40位源码SHA>`，使用本仓已合并源码 commit，启用后开始新会话。CI 验证普通 Git URL 加精确 SHA 安装。要使用官方入口，请打开[官方媒体页面](https://hermes-agent.nousresearch.com/docs/plugins/acedatacloud-media)，安装 `acedatacloud-media` 并选择本服务工具集。未发布 PyPI 新项目，也未承诺本变体另获官方 listing。
 
-1. 打开 [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=acemusichermes_readme_api_key)，登录或注册。
+1. 打开 [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=hermes&utm_medium=referral&utm_campaign=evergreen)，登录或注册。
 2. 如未初始化，先初始化“通用应用”；也可选择具有本服务权限的专用应用。在“密钥 / 管理密钥 → 创建”中新建可单独撤销的 Hermes 密钥。
 3. 检查到期时间、使用量限制和允许 API。复制不含 `Bearer ` 的原始 Token 到当前 Hermes profile；`platform-...` 管理 Token 不能替代应用 API Key。不要写进提示词或 Git。
-4. 调用前检查[当前价格与余额](https://platform.acedata.cloud/models?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=acemusichermes_readme_pricing)。试用额度以账户实际显示为准，安装成功不表示免费使用。
+4. 调用前检查[当前价格与余额](https://platform.acedata.cloud/models?utm_source=hermes&utm_medium=referral&utm_campaign=evergreen)。试用额度以账户实际显示为准，安装成功不表示免费使用。
 
 ![应用密钥获取指引（英文界面原图），来源于已有 Ace 文档](https://raw.githubusercontent.com/AceDataCloud/NanoBananaDify/2522b2f57210597af2db866445319334a1677a23/_assets/tutorial/get-api-key-en.png)
 
@@ -33,7 +33,7 @@ hermes tools list
 
 ## 单一源码与验收边界
 
-由 [canonical 媒体源码](https://github.com/AceDataCloud/AceDataCloudMediaHermes) 的 `f47dbc5ee333c8ca7c7489c31283dbe24035bdad` 统一生成。`source-lock.json` 固定 transport/schema 的来源、哈希和名称映射，CI 用同一 commit 重新生成比较。runtime/schema 修复先交唯一源，再生成消费仓，不手写维护多套底座。
+由 [canonical 媒体源码](https://github.com/AceDataCloud/AceDataCloudMediaHermes) 的 `3fe6f2c008ab7589a80ea07e0444a51373a02942` 统一生成。`source-lock.json` 固定 transport/schema 的来源、哈希和名称映射，CI 用同一 commit 重新生成比较。runtime/schema 修复先交唯一源，再生成消费仓，不手写维护多套底座。
 
 CI 包括 unittest 正常发现、Hermes 0.23.1 官方校验、按精确 SHA 正常 Git 安装、两种隔离模式的单独/共装注册和无效输入 dispatch。mock/宿主兼容不等于新收费请求、唯一账单、当前 GUI、默认预装或官方收录。
 

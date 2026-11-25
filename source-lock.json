@@ -1,6 +1,6 @@
 {
   "canonical_repository": "https://github.com/AceDataCloud/AceDataCloudMediaHermes",
-  "canonical_commit": "f47dbc5ee333c8ca7c7489c31283dbe24035bdad",
+  "canonical_commit": "3fe6f2c008ab7589a80ea07e0444a51373a02942",
   "generator": "scripts/export_service.py",
   "service": "acemusic",
   "consumer_repository": "https://github.com/AceDataCloud/ACEMusicHermes",
@@ -26,11 +26,11 @@
     "plugin.yaml": "164d13c36c2acfc5a1d74f350ea9969e04c12414d6df061439aabb31e191267a",
     "tests/test_contracts.py": "cfea22976154a3237ce2434c6d776c7545eb70b3a64c5317afe3e2b5c9699969",
     "tests/test_registration.py": "73212b6175460ebb80acce164528d1d2694ff6c1774569f5914e431c2e8f6ca5",
-    "tests/test_source_profile.py": "d29b78f9671e46fccfa1239c8f864ae282c19c8f7d9411b8b2ac2138373336ba",
+    "tests/test_source_profile.py": "1e71f074b84924f5c56611e68cbc20edc002e1fc2c01142a29e05c0d8451a53a",
     "scripts/check_runtime.py": "86465fb9be9c1e687dd7820182053e2820809eb002fdbae8617f08dcb1bfe3f7",
     "LICENSE": "72d30730d068e067be58878959bac2450f5a05f2b2e3c365cdc13a0181635c3c",
-    ".github/workflows/validate.yml": "cfec472d38b624e231693284797d97a6118a7418df4fcaf06d783ca06f8c17f4",
-    "README.md": "65bb955325baba6025809edc6cd5b71795c7da8952cf1df30c55af55f3c58753",
-    "readme/README_zh_Hans.md": "bb7349da8483e5e2975197e1b813a0b104cab4e26c224ea7b37dc510f4bb3840"
+    ".github/workflows/validate.yml": "42a9680b9b5102cba07e1c8148797e4f9ded0486962ec7751f6f8962796f32ad",
+    "README.md": "b2842b08f7d96fcb2d5ef274c3c30fbf5a1ceec7f1d0f06457a5af6d1d96be9a",
+    "readme/README_zh_Hans.md": "7ecc4eb0e32b2ecf8d2eee2a3d5518917d4fccfd6646b7af3da01535467522b2"
   }
 }
