@@ -70,6 +70,18 @@
         },
         "minItems": 2,
         "maxItems": 2
+      },
+      "asset_id": {
+        "type": "string",
+        "maxLength": 128
+      },
+      "asset_type": {
+        "type": "string",
+        "enum": [
+          "midi",
+          "image",
+          "video"
+        ]
       }
     }
   },
@@ -95,8 +107,67 @@
   "generate_name": "acedatacloud_single_acemusic_generate",
   "tools": [
     "acedatacloud_single_acemusic_generate",
-    "acedatacloud_single_acemusic_task"
+    "acedatacloud_single_acemusic_task",
+    "acedatacloud_single_acemusic_upload_asset",
+    "acedatacloud_single_acemusic_retrieve_assets"
   ],
   "toolset": "acedatacloud-single-acemusic",
+  "asset_path": "/acemusic/assets",
+  "asset_upload_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "type",
+      "url"
+    ],
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": [
+          "midi",
+          "image",
+          "video"
+        ]
+      },
+      "url": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 20000
+      },
+      "name": {
+        "type": "string",
+        "maxLength": 20000
+      }
+    }
+  },
+  "asset_query_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [],
+    "properties": {
+      "id": {
+        "type": "string",
+        "maxLength": 128
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "midi",
+          "image",
+          "video"
+        ]
+      },
+      "page": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 10001
+      },
+      "page_size": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 100
+      }
+    }
+  },
   "repo": "ACEMusicHermes"
 }

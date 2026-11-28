@@ -13,6 +13,19 @@ SPECS = [json.loads(p.read_text()) for p in sorted((ROOT / 'services').glob('*.j
 SPEC = SPECS[0]
 
 
+
+class AceMusicAssetContracts(unittest.TestCase):
+    def test_scoped_asset_reads_and_paired_generation(self):
+        spec = json.loads((ROOT / "services/acemusic.json").read_text()) if (ROOT / "services/acemusic.json").exists() else None
+        if spec is None:
+            self.skipTest("ACE Music is not part of this distribution")
+        native = client.MediaClient(spec)
+        with patch.object(client,"request",return_value={"items":[],"count":0}) as send:
+            self.assertEqual(native.retrieve_assets({"page":2}),{"items":[],"count":0})
+            send.assert_called_once_with("/acemusic/assets",{"action":"retrieve","page":2})
+        with self.assertRaises(ValueError):
+            native.generate({"prompt":"test","asset_type":"midi"})
+
 class ContractTests(unittest.TestCase):
     def test_pending_is_not_success(self):
         result = client.normalize({'task_id': 'task-123'})

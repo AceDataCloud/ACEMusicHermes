@@ -32,6 +32,13 @@ def register(ctx):
                 'Retrieve an existing Ace Data Cloud task; wait at most 60 seconds.'
                 ' Never submits a new generation.',
             ))
+        if spec.get('asset_path'):
+            operations.extend([
+                (spec['tool_prefix'] + '_upload_asset', 'upload_asset', spec['asset_upload_schema'],
+                 'Import a reference from a public HTTPS URL. Successful import is billed separately. Save its task ID.'),
+                (spec['tool_prefix'] + '_retrieve_assets', 'retrieve_assets', spec['asset_query_schema'],
+                 'Read an owned reference by asset ID, or omit ID for free paginated history.'),
+            ])
         for name, operation, parameters, description in operations:
             ctx.register_tool(
                 name=name, toolset=spec['toolset'],

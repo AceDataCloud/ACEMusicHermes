@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: AceDataCloud/AceDataCloudMediaHermes
-          ref: 3fe6f2c008ab7589a80ea07e0444a51373a02942
+          ref: 3f8fecefc65e3b72eaebfae90a8b05d446b1b204
           path: .canonical-source
       - name: Check generated source against immutable canonical commit
         run: |
