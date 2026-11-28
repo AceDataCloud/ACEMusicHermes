@@ -2,7 +2,7 @@
 
 [English](../README.md)
 
-本源码变体只注册 **ACE Music 的 2 个工具**，由 Ace Data Cloud 维护，不表示与服务品牌方有隶属关系。需要 Hermes **0.23.1+**。官方目录仍只有 `acedatacloud-media` 一条媒体产品线入口，源码合并不表示独立官方收录或默认预装。
+本源码变体只注册 **ACE Music 的 4 个工具**，由 Ace Data Cloud 维护，不表示与服务品牌方有隶属关系。需要 Hermes **0.23.1+**。官方目录仍只有 `acedatacloud-media` 一条媒体产品线入口，源码合并不表示独立官方收录或默认预装。
 
 ## 安装与应用 Token
 
@@ -13,7 +13,7 @@ hermes tools enable acedatacloud-single-acemusic
 hermes tools list
 ```
 
-默认安装仓库当前默认分支；如需固定版本或回滚，增加 `--ref <40位源码SHA>`，使用本仓已合并源码 commit，启用后开始新会话。CI 验证普通 Git URL 加精确 SHA 安装。要使用官方入口，请打开[官方媒体页面](https://hermes-agent.nousresearch.com/docs/plugins/acedatacloud-media)，安装 `acedatacloud-media` 并选择本服务工具集。未发布 PyPI 新项目，也未承诺本变体另获官方 listing。
+默认安装仓库当前默认分支；如需固定版本或回滚，增加 `--ref <40位源码SHA>`，使用本仓已合并源码 commit，启用后开始新会话。CI 验证普通 Git URL 加精确 SHA 安装。要使用官方入口，请打开[官方媒体页面](https://hermes-agent.nousresearch.com/docs/plugins/acedatacloud-media)。安装 `acedatacloud-media` 并选择本服务工具集。未发布 PyPI 新项目，也未承诺本变体另获官方 listing。
 
 1. 打开 [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=hermes&utm_medium=referral&utm_campaign=evergreen)，登录或注册。
 2. 如未初始化，先初始化“通用应用”；也可选择具有本服务权限的专用应用。在“密钥 / 管理密钥 → 创建”中新建可单独撤销的 Hermes 密钥。
@@ -27,13 +27,13 @@ hermes tools list
 ## 工具与共装
 
 主工具：`acedatacloud_single_acemusic_generate`。已有任务查询工具为 `acedatacloud_single_acemusic_task`，传入 `task_id` 及可选 `wait_seconds`（0–60）；pending/预览媒体不视为终态成功。
-旧候选 `acedata_` 名称已移除，无别名；原服务如果有任务查询工具，旧任务 ID 可继续查询。
+
 
 本变体使用 `acedatacloud_single_` 名称及 `acedatacloud-single-acemusic` 工具集，与官方媒体包的名称分开，避免共装覆盖。两者同时安装时同一服务只启用一种，避免模型重复收费调用；插件不自动改 profile 的其他选择。此服务不注册原生图像后端。
 
 ## 单一源码与验收边界
 
-由 [canonical 媒体源码](https://github.com/AceDataCloud/AceDataCloudMediaHermes) 的 `3fe6f2c008ab7589a80ea07e0444a51373a02942` 统一生成。`source-lock.json` 固定 transport/schema 的来源、哈希和名称映射，CI 用同一 commit 重新生成比较。runtime/schema 修复先交唯一源，再生成消费仓，不手写维护多套底座。
+由 [canonical 媒体源码](https://github.com/AceDataCloud/AceDataCloudMediaHermes) 的 `3f8fecefc65e3b72eaebfae90a8b05d446b1b204` 统一生成。`source-lock.json` 固定 transport/schema 的来源、哈希和名称映射，CI 用同一 commit 重新生成比较。runtime/schema 修复先交唯一源，再生成消费仓，不手写维护多套底座。
 
 CI 包括 unittest 正常发现、Hermes 0.23.1 官方校验、按精确 SHA 正常 Git 安装、两种隔离模式的单独/共装注册和无效输入 dispatch。mock/宿主兼容不等于新收费请求、唯一账单、当前 GUI、默认预装或官方收录。
 

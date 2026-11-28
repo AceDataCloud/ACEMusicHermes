@@ -22,7 +22,8 @@ class SourceProfileTests(unittest.TestCase):
     def test_does_not_override_official_names(self):
         self.assertTrue(all(x.startswith('acedatacloud_single_') for x in SPEC['tools']))
         self.assertTrue(SPEC['toolset'].startswith('acedatacloud-single-'))
-        self.assertEqual(len(SPEC['tools']), 2 if SPEC.get('task_path') else 1)
+        expected = 1 + int(bool(SPEC.get('task_path'))) + (2 if SPEC.get('asset_path') else 0)
+        self.assertEqual(len(SPEC['tools']), expected)
 
     def test_reference_guards_before_submission(self):
         properties = SPEC['generate_schema']['properties']

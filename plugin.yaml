@@ -6,7 +6,9 @@
   "requires_hermes": ">=0.23.1",
   "provides_tools": [
     "acedatacloud_single_acemusic_generate",
-    "acedatacloud_single_acemusic_task"
+    "acedatacloud_single_acemusic_task",
+    "acedatacloud_single_acemusic_upload_asset",
+    "acedatacloud_single_acemusic_retrieve_assets"
   ],
   "requires_env": [
     "ACEDATACLOUD_API_KEY"

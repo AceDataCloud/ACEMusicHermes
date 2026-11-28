@@ -14,6 +14,7 @@ from urllib.parse import urlsplit
 
 BASE_URL = 'https://api.acedata.cloud'
 KEY_ENV = 'ACEDATACLOUD_API_KEY'
+ASSET_KEYS = {'id', 'type', 'name', 'status', 'duration_seconds', 'expires_at'}
 DONE = {'complete', 'completed', 'succeeded', 'succeed', 'success', 'finished'}
 FAILED = {'failed', 'error', 'cancelled', 'canceled', 'rejected'}
 MEDIA_KEYS = {'image_url', 'audio_url', 'video_url', 'file_url', 'raw_image_url', 'url'}
@@ -212,12 +213,20 @@ class MediaClient:
             headers['model'] = body.pop('model')
         if self.spec['service'] == 'nano-banana':
             body['action'] = 'edit' if body.get('image_urls') else 'generate'
+        if self.spec['service'] == 'hailuo':
+            has_image = bool(body.get('first_image_url'))
+            model = body.setdefault('model', 'minimax-i2v' if has_image else 'minimax-t2v')
+            if has_image != model.startswith('minimax-i2v'):
+                raise ValueError('Hailuo image models require a first_image_url and its text model takes a prompt only.')
         if self.spec['service'] == 'veo':
             body['action'] = 'image2video' if body.get('image_urls') else 'text2video'
             if body['action'] == 'text2video':
                 body.pop('aspect_ratio', None)
         if self.spec['service'] == 'acemusic':
             action = body['action']
+            if 'asset_id' in body or 'asset_type' in body:
+                if not (body.get('asset_id') and body.get('asset_type') and action == 'generate' and not body.get('custom') and body.get('model','acemusic-v1.1') == 'acemusic-v1.1'):
+                    raise ValueError('Provide both reference ID and type in v1.1 idea mode.')
             if action == 'generate':
                 fields = ('lyric', 'title', 'style') if body.get('custom') else ('prompt',)
             elif action == 'upload':
@@ -251,6 +260,24 @@ class MediaClient:
                 raise ApiError('invalid_response', 'The synchronous response is missing its documented result fields. Check the request trace before retrying.')
         return self.check_media(result)
 
+    def upload_asset(self, args):
+        validate(args,self.spec['asset_upload_schema'])
+        return normalize(request(self.spec['asset_path'],{'action':'upload','async':True,**args}))
+
+    def retrieve_assets(self, args):
+        validate(args,self.spec['asset_query_schema'])
+        if 'id' in args and any(k in args for k in ('page','page_size','type')):
+            raise ValueError('Provide an asset ID or pagination and an optional type.')
+        raw=request(self.spec['asset_path'],{'action':'retrieve',**args})
+        if 'id' in args:
+            value=raw.get('data')
+            if not isinstance(value,dict) or value.get('id')!=args['id']:
+                raise ApiError('invalid_response','Asset identity mismatch.')
+            return {'success':True,'data':public_data(value, ASSET_KEYS)}
+        if not isinstance(raw.get('items'),list) or not isinstance(raw.get('count'),int):
+            raise ApiError('invalid_response','Expected a page of reference assets.')
+        return {'items':public_data(raw['items'],ASSET_KEYS),'count':raw['count']}
+
     def check_media(self, result):
         if self.spec.get('task_path') and result['status'] == 'succeeded':
             kind = self.spec.get('kind', 'image')
@@ -281,6 +308,13 @@ class MediaClient:
                     elif state in {'completed', 'succeeded', 'complete'} or record.get('finished') is True:
                         record = {**record, 'finished_at': record.get('finished_at') or True}
                 result = normalize(record, task_id, retrieved=True)
+                if (self.spec['service'] == 'acemusic' and isinstance(record,dict) and
+                    record.get('type') == 'assets' and record.get('state',record.get('status')) == 'succeeded'):
+                    response=record.get('response') or {}
+                    asset=response.get('data')
+                    if response.get('success') is True and isinstance(asset,dict) and asset.get('id') and asset.get('type') in ('midi','image','video'):
+                        return {**result,'status':'succeeded','success':True,'data':public_data(asset,ASSET_KEYS),'media_urls':[]}
+
             except ApiError as error:
                 error.result['task_id'] = task_id
                 error.result['next_action'] = 'Retry retrieval of this same task ID; never repeat the generation to recover a query failure.'

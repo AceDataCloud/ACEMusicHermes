@@ -1,6 +1,6 @@
 {
   "canonical_repository": "https://github.com/AceDataCloud/AceDataCloudMediaHermes",
-  "canonical_commit": "3fe6f2c008ab7589a80ea07e0444a51373a02942",
+  "canonical_commit": "3f8fecefc65e3b72eaebfae90a8b05d446b1b204",
   "generator": "scripts/export_service.py",
   "service": "acemusic",
   "consumer_repository": "https://github.com/AceDataCloud/ACEMusicHermes",
@@ -16,21 +16,21 @@
     ],
     "native_image_provider": null
   },
-  "transport_sha256": "890fd4b625ac523777690461aeb1e7d05b353409480b82492ae6c529af0c9c54",
-  "canonical_operation_sha256": "1226c89b17fa55a2c96168774a6de2d2a45cfad8f63ffc734f2d2623d7b8c4e3",
+  "transport_sha256": "ac2f68a183fcc9678233314420d55919736aac40ca166d631b5ab864779230cf",
+  "canonical_operation_sha256": "e375ae1d14ae9ba4d6e9e63c68f654cf6670e20f4d3fcc01a79582b3b51f63c5",
   "generated_files": {
-    "__init__.py": "befe7ccc20f9dc0cd05d3c62fe25f036ab59371a82de41ef4edbc581af803aa5",
-    "client.py": "890fd4b625ac523777690461aeb1e7d05b353409480b82492ae6c529af0c9c54",
+    "__init__.py": "3384ba538b31d9102bae0bc49464a08d183df6eb3168118a0ed7cbaf71f32aae",
+    "client.py": "ac2f68a183fcc9678233314420d55919736aac40ca166d631b5ab864779230cf",
     "image_provider.py": "183dc1f72fa1905364466aa30da14d82c074d3484ee6a6a6a5b739a62342490c",
-    "services/acemusic.json": "1acedbfa763296c53378966cf46208d53e37e43067c942fd72dad7ffcc18af3a",
-    "plugin.yaml": "164d13c36c2acfc5a1d74f350ea9969e04c12414d6df061439aabb31e191267a",
-    "tests/test_contracts.py": "cfea22976154a3237ce2434c6d776c7545eb70b3a64c5317afe3e2b5c9699969",
-    "tests/test_registration.py": "73212b6175460ebb80acce164528d1d2694ff6c1774569f5914e431c2e8f6ca5",
-    "tests/test_source_profile.py": "1e71f074b84924f5c56611e68cbc20edc002e1fc2c01142a29e05c0d8451a53a",
-    "scripts/check_runtime.py": "86465fb9be9c1e687dd7820182053e2820809eb002fdbae8617f08dcb1bfe3f7",
+    "services/acemusic.json": "effabed9cd5f64b0a93fa4a9d3ad2dc96dbdc8a2b26b4899da26b5bc80accf11",
+    "plugin.yaml": "8ba40c658a46fd5d693dc7803fcb17bf62084e027c207b8072b1c6745ea546a0",
+    "tests/test_contracts.py": "4b8f3d6ea47d9292fee800629f5bc424798f95d2f34ca549a5cdd2a833308874",
+    "tests/test_registration.py": "8faea654d3ed7a9401e310901addebc42ea9b6e8271de47a5682aa911965d6ee",
+    "tests/test_source_profile.py": "ea0672631568b8cd3a876ddd7c4bba01e86b0d2e67687972d8c905ae62986a15",
+    "scripts/check_runtime.py": "c8b416ffa841a38421ab7b7d8571b304280376acec4785262721b4b971148329",
     "LICENSE": "72d30730d068e067be58878959bac2450f5a05f2b2e3c365cdc13a0181635c3c",
-    ".github/workflows/validate.yml": "42a9680b9b5102cba07e1c8148797e4f9ded0486962ec7751f6f8962796f32ad",
-    "README.md": "b2842b08f7d96fcb2d5ef274c3c30fbf5a1ceec7f1d0f06457a5af6d1d96be9a",
-    "readme/README_zh_Hans.md": "7ecc4eb0e32b2ecf8d2eee2a3d5518917d4fccfd6646b7af3da01535467522b2"
+    ".github/workflows/validate.yml": "c5cb6310aafce2332bc535e1e5f00ec3ad65e0f0f18c1324eb76305ad85dde08",
+    "README.md": "c22a920ac6154c2bacd50795a3a6c2e7edab6242e6248be57154a7240bf6a7f7",
+    "readme/README_zh_Hans.md": "f6fcfe7bef0bfab890b1195d802f889bd80f7c644609760947cdf3077d416ebf"
   }
 }
